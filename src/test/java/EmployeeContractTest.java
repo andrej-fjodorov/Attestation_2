@@ -1,3 +1,4 @@
+import jdk.jfr.Description;
 import org.example.Employee;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,7 @@ import static io.restassured.RestAssured.given;
 
 public class EmployeeContractTest {
     @Test
+    @Description("Получение информации о токене авторизации")
     public void get_UserToken() {
         String uri = "https://x-clients-be.onrender.com/";
         Map<String, String> request = new HashMap<>();
@@ -27,6 +29,7 @@ public class EmployeeContractTest {
     }
 
     @Test
+    @Description("Создание авторизованного сотрудника")
     public void create_Employee(){
         String uri = "https://x-clients-be.onrender.com/";
         Map<String, String> request = new HashMap<>();
@@ -54,15 +57,17 @@ public class EmployeeContractTest {
     }
 
     @Test
+    @Description("Вывод имен сотрудников, которые работают в кофейне")
     public void get_Employee() {
         String uri = "https://x-clients-be.onrender.com/";
         List name = given()
                 .when().get(uri + "employee?company=715")
                 .then()
-                .extract().path("firstName", "lastName");
+                .extract().path("firstName");
         System.out.print(name);
 
+
     }
-    @Test
+
 
 }
