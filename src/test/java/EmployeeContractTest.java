@@ -54,13 +54,15 @@ public class EmployeeContractTest {
     }
 
     @Test
-    public void get_Employee(){
-            String uri = "https://x-clients-be.onrender.com/";
-            List name = given()
-                    .when().get(uri+"employee?company=715")
-                    .then()
-                    .extract().path("firstName","lastName");
-            System.out.print(name);
+    public void get_Employee() {
+        String uri = "https://x-clients-be.onrender.com/";
+        List name = given()
+                .when().get(uri + "employee?company=715")
+                .then()
+                .extract().path("firstName", "lastName");
+        System.out.print(name);
 
     }
+    @Test
+
 }
