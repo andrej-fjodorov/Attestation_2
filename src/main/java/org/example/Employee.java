@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.Objects;
 
 public class Employee {
@@ -9,9 +11,10 @@ public class Employee {
     private String email;
     private String url;
     private String phone;
-
     private String birthdate;
+
     private boolean isActive;
+
 
     public Employee(int id, String firstName, String lastName, String middleName, int companyId, String email, String url, String phone, String birthdate, boolean isActive) {
         this.id = id;
@@ -30,76 +33,76 @@ public class Employee {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public int getCompanyId() {
-        return companyId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getBirthdate() {
-        return birthdate;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
     }
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
+    public int getCompanyId() {
+        return companyId;
+    }
+
     public void setCompanyId(int companyId) {
         this.companyId = companyId;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    public String getBirthdate() {
+        return birthdate;
+    }
+
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public boolean isActive() {
+        return isActive;
     }
 
     public void setActive(boolean active) {
