@@ -1,20 +1,35 @@
-import org.example.Employee;
+package Database;
 
+import Model.Employee;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class JDBCtest {
-    public static void main(String[] args) throws SQLException {
+    @Test
+    public  void GetAllEmployee() throws SQLException {
 
+        File propFile = new File("src/test/java/db.properties");
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileReader(propFile));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-        String connectionString = "jdbc:postgresql://dpg-cj94hf0eba7s73bdki80-a.oregon-postgres.render.com/x_clients_db_r06g";
-        String user = "x_clients_db_r06g_user";
-        String password = "0R1RNWXMepS7mrvcKRThRi82GtJ2Ob58";
+        String dburl = properties.getProperty("DB");
+        String user = properties.getProperty("USER");
+        String password = properties.getProperty("PASS");
 
-        Connection connection = DriverManager.getConnection(connectionString, user, password);
+        Connection connection = DriverManager.getConnection(dburl, user, password);
 
-        String sql = "SELECT * FROM employee";
+        String sql = "SELECT * FROM employee where company_id = 715";
         ResultSet resultSet = connection.createStatement().executeQuery(sql);
 
         List<Employee> names = new ArrayList<>();

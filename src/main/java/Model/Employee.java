@@ -1,4 +1,4 @@
-package org.example;
+package Model;
 
 import java.util.Objects;
 

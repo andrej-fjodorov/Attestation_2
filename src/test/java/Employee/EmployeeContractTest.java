@@ -1,11 +1,17 @@
+package Employee;
+
 import jdk.jfr.Description;
-import org.example.Employee;
+import Model.Employee;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
 
@@ -14,11 +20,20 @@ import static io.restassured.RestAssured.given;
 public class EmployeeContractTest {
     @Test
     @Description("Получение информации о токене авторизации")
-    public void get_UserToken() {
-        String uri = "https://x-clients-be.onrender.com/";
+    public void getUserToken() {
+        File propFile = new File("src/test/java/employee.properties");
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileReader(propFile));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String uri = properties.getProperty("URI");
+        String username = properties.getProperty("USER");
+        String password = properties.getProperty("PASS");
         Map<String, String> request = new HashMap<>();
-        request.put("username", "leonardo");
-        request.put("password", "leads");
+        request.put("username", username);
+        request.put("password", password);
         String userToken = given().contentType("application/json")
                 .body(request)
                 .when()
@@ -30,11 +45,20 @@ public class EmployeeContractTest {
 
     @Test
     @Description("Создание авторизованного сотрудника")
-    public void create_Employee(){
-        String uri = "https://x-clients-be.onrender.com/";
+    public void createEmployee(){
+        File propFile = new File("src/test/java/employee.properties");
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileReader(propFile));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String uri = properties.getProperty("URI");
+        String username = properties.getProperty("USER");
+        String password = properties.getProperty("PASS");
         Map<String, String> request = new HashMap<>();
-        request.put("username", "leonardo");
-        request.put("password", "leads");
+        request.put("username", username);
+        request.put("password", password);
         String userToken = given().contentType("application/json")
                 .body(request)
                 .when()
@@ -58,8 +82,15 @@ public class EmployeeContractTest {
 
     @Test
     @Description("Вывод имен сотрудников, которые работают в кофейне")
-    public void get_Employee() {
-        String uri = "https://x-clients-be.onrender.com/";
+    public void getEmployee() {
+        File propFile = new File("src/test/java/employee.properties");
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileReader(propFile));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String uri = properties.getProperty("URI");
         List name = given()
                 .when().get(uri + "employee?company=715")
                 .then()
