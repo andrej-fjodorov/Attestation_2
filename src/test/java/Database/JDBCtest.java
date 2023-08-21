@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class JDBCtest {
+
     @Test
     public  void GetAllEmployee() throws SQLException {
 
