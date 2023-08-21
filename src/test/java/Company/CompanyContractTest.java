@@ -80,10 +80,10 @@ public class CompanyContractTest {
                 throw new RuntimeException(e);
             }
             String uri = properties.getProperty("URI");
-            List name = given()
+            String name = given()
                     .when().get(uri+"company")
                     .then()
-                    .extract().path("name");
+                    .extract().response().asPrettyString();
             System.out.print(name);
         }
 

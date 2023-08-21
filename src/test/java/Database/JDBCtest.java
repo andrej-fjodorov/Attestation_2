@@ -14,7 +14,7 @@ import java.util.Properties;
 public class JDBCtest {
 
     @Test
-    public  void GetAllEmployee() throws SQLException {
+    public void GetAllEmployee() throws SQLException {
 
         File propFile = new File("src/test/java/db.properties");
         Properties properties = new Properties();
@@ -34,7 +34,7 @@ public class JDBCtest {
         ResultSet resultSet = connection.createStatement().executeQuery(sql);
 
         List<Employee> names = new ArrayList<>();
-        while (resultSet.next()){
+        while (resultSet.next()) {
             int id = resultSet.getInt("id");
             String lastName = resultSet.getString("last_name");
             String firstName = resultSet.getString("first_name");
@@ -45,7 +45,7 @@ public class JDBCtest {
             String phone = resultSet.getString("phone");
             String birthdate = resultSet.getString("birthdate");
             boolean isActive = resultSet.getBoolean("is_active");
-            Employee emp = new Employee(id,firstName,lastName,middleName,companyId,email,url,phone,birthdate,isActive);
+            Employee emp = new Employee(id, firstName, lastName, middleName, companyId, email, url, phone, birthdate, isActive);
             names.add(emp);
             System.out.println(names);
 
@@ -53,4 +53,6 @@ public class JDBCtest {
         connection.close();
     }
 }
+
+
 

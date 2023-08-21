@@ -3,6 +3,10 @@ package Model;
 import java.util.Objects;
 
 public class Employee {
+
+    public Employee() {
+    }
+
     private int id;
     private String firstName;
     private String lastName;

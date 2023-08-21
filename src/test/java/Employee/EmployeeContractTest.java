@@ -128,5 +128,22 @@ public class EmployeeContractTest {
 
     }
 
+    @Test
+    @Description("Компания без сотрудников")
+    public void getCompanyWithoutEmploee() {
+        File propFile = new File("src/test/java/employee.properties");
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileReader(propFile));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String uri = properties.getProperty("URI");
+        String name = given()
+                .when().get(uri + "employee?company=997")
+                .then()
+                .extract().response().asPrettyString();
+    }
+
 
 }
